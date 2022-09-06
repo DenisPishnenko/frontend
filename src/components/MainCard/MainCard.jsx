@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -28,20 +29,27 @@ const useStyles = makeStyles({
   },
 });
 
-const MainCard = ({ news }) => {
+const MainCard = ({ title, content }) => {
   const classes = useStyles();
-  return news.map((item) => (
-    <Card className={classes.root} key={item.id}>
-      <CardContent>
-        <Typography className={classes.title} variant="h5" component="h2">
-          {item.title}
-        </Typography>
-        <Typography className={classes.content} variant="body2" component="p">
-          {item.content}
-        </Typography>
-      </CardContent>
-    </Card>
-  ));
+  return (
+    <>
+      <Card className={classes.root}>
+        <CardContent>
+          <Typography className={classes.title} variant="h5" component="h2">
+            {title}
+          </Typography>
+          <Typography className={classes.content} variant="body2" component="p">
+            {content}
+          </Typography>
+        </CardContent>
+      </Card>
+    </>
+  );
+};
+
+MainCard.propTypes = {
+  title: PropTypes.string,
+  content: PropTypes.string,
 };
 
 export default MainCard;
