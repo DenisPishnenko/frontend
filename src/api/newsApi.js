@@ -1,9 +1,6 @@
-import axios from "axios";
-
-import { BASE_URL } from "../constants";
+import { api } from ".";
 
 export const getAllNews = async () => {
-  const response = await axios.get(`${BASE_URL}/news`);
-  const data = await response.data;
+  const { data } = await api.get("/news");
   return data;
 };
