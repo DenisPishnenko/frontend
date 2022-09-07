@@ -1,6 +1,6 @@
 import {
   NEWS_FETCHED_FAILED,
-  NEWS_FETCHED_PROGRESSED,
+  NEWS_FETCHED_REQUESTED,
   NEWS_FETCHED_SUCCESSED,
 } from "../../constants";
 
@@ -12,10 +12,10 @@ const initialState = {
 
 const newsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case NEWS_FETCHED_PROGRESSED:
-      return { ...state, isLoading: true };
+    case NEWS_FETCHED_REQUESTED:
+      return { ...state, isLoading: true, error: null };
     case NEWS_FETCHED_SUCCESSED:
-      return { ...state, news: action.payload, isLoading: false };
+      return { ...state, news: action.payload, isLoading: false, error: null };
     case NEWS_FETCHED_FAILED:
       return { ...state, error: action.payload, isLoading: false };
     default:
