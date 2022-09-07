@@ -1,26 +1,11 @@
-import React from "react";
-import { memo } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { memo } from "react";
+
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import { Button } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  toolBar: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
+import { useStyles } from "./style";
 
 const Header = () => {
   const classes = useStyles();
