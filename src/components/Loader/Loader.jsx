@@ -1,23 +1,16 @@
 import React from "react";
+import { memo } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    margin: "auto",
-  },
-});
+import { useStyles } from "./style";
 
 const Loader = () => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <CircularProgress color="secondary" />
+      <CircularProgress />
     </div>
   );
 };
 
-export default Loader;
+export default memo(Loader);
