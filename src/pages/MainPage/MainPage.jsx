@@ -1,6 +1,4 @@
-import React from "react";
-import { memo } from "react";
-import { useEffect } from "react";
+import { React, memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ShowAlert from "../../components/Alert/ShowAlert";
 
@@ -31,7 +29,7 @@ const MainPage = () => {
   if (error) {
     return (
       <div className={classes.container}>
-        <ShowAlert severity="error" message="Error" />
+        <ShowAlert severity="error" message={error.message} />
       </div>
     );
   }
