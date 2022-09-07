@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 src/reportWebVitals.js
-.eslintrc.js
+.eslintrc.json
 .env
 # testing
 /coverage
