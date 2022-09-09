@@ -1,19 +1,24 @@
 import React from "react";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
 
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+import { register } from "../../redux/actions/auth";
+
 import { useStyles } from "./style";
 
-const authForm = () => {
+const AuthForm = () => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const formik = useFormik({
     initialValues: {
+      name: "",
       email: "",
       password: "",
-      name: "",
     },
+    onSubmit: (values) => dispatch(register(values)),
   });
   return (
     <form
@@ -34,17 +39,17 @@ const authForm = () => {
         id="standard-basic"
         label="Email"
         name="email"
-        type="text"
+        type="email"
         onChange={formik.handleChange}
-        value={formik.values.name}
+        value={formik.values.email}
       />
       <TextField
         id="standard-basic"
         label="Password"
-        name="email"
+        name="password"
         type="text"
         onChange={formik.handleChange}
-        value={formik.values.name}
+        value={formik.values.password}
       />
       <Button
         variant="outlined"
@@ -58,4 +63,4 @@ const authForm = () => {
   );
 };
 
-export default authForm;
+export default AuthForm;
