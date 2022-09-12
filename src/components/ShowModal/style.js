@@ -15,6 +15,8 @@ export const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
     width: 450,
     height: 350,
+    display: "flex",
+    flexDirection: "column",
   },
   title: {
     textAlign: "center",
