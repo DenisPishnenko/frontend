@@ -10,27 +10,57 @@ import {
 
 const initialState = {
   open: false,
-  user: {},
+  user: null,
   isFetching: false,
+  isLoggedIn: false,
   error: null,
 };
 
 const authReducer = (state = initialState, action) => {
+  console.log(action.payload);
   switch (action.type) {
     case IS_AUTH_MODAL_OPEN:
       return { ...state, open: true };
     case TOOGLE_MODAL:
       return { ...state, open: false };
     case USER_AUTH_REQUESTED:
-      return { ...state, isFetching: true, error: null, user: {} };
+      return {
+        ...state,
+        isFetching: true,
+        error: null,
+      };
     case USER_REGISTER_SUCCESSED:
-      return { ...state, isFetching: false, error: null, user: action.payload };
+      return {
+        ...state,
+        isFetching: false,
+        isLoggedIn: true,
+        error: null,
+        user: action.payload,
+        open: false,
+      };
     case USER_REGISTER_FAILED:
-      return { ...state, isFetching: false, error: action.payload, user: {} };
+      return {
+        ...state,
+        isFetching: false,
+        isLoggedIn: false,
+        error: action.payload,
+      };
     case USER_LOGIN_SUCCESSED:
-      return { ...state, isFetching: false, error: null, user: action.payload };
+      return {
+        ...state,
+        isFetching: false,
+        isLoggedIn: true,
+        error: null,
+        user: action.payload,
+        open: false,
+      };
     case USER_LOGIN_FAILED:
-      return { ...state, isFetching: false, error: action.payload, user: {} };
+      return {
+        ...state,
+        isFetching: false,
+        isLoggedIn: false,
+        error: action.payload,
+      };
     default:
       return state;
   }
