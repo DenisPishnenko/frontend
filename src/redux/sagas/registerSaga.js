@@ -1,18 +1,20 @@
-import { put, call, takeLatest } from "redux-saga/effects";
+import { put, call, takeEvery } from "redux-saga/effects";
 
-import { registerUser } from "../../api/registerApi";
+import api from "../../api/index";
 import { USER_AUTH_REQUESTED } from "../../constants";
 import { registerFailed, registerSuccessed } from "../actions/auth";
 
-function* registerWorker(payload) {
+function* registerWorker({ payload }) {
   try {
-    const user = yield call(registerUser(payload));
-    yield put(registerSuccessed(user));
+    const data = yield call(api.post, "/users", { user: payload });
+    console.log("user", data);
+    yield put(registerSuccessed(data));
   } catch (error) {
+    console.log("error", error);
     yield put(registerFailed(error.message));
   }
 }
 
 export function* registerWatcher() {
-  yield takeLatest(USER_AUTH_REQUESTED, registerWorker);
+  yield takeEvery(USER_AUTH_REQUESTED, registerWorker);
 }
