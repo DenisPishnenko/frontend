@@ -7,4 +7,12 @@ export const useStyles = makeStyles((theme) => ({
       width: "25ch",
     },
   },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  invalid: {
+    color: "red",
+    fontSize: 12,
+  },
 }));
