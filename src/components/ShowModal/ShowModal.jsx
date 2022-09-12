@@ -13,6 +13,7 @@ const ShowModal = () => {
   const open = useSelector((state) => state.auth.open);
   const user = useSelector((state) => state.auth.user);
   console.log(user);
+  console.log(open);
   const dispath = useDispatch();
   return (
     <Modal
