@@ -1,28 +1,37 @@
 import {
-  IS_AUTH_MODAL_OPEN,
-  TOOGLE_MODAL,
+  OPEN_MODAL,
+  CLOSE_MODAL,
   USER_AUTH_REQUESTED,
   USER_LOGIN_FAILED,
+  USER_LOGIN_REQUESTED,
   USER_LOGIN_SUCCESSED,
   USER_REGISTER_FAILED,
   USER_REGISTER_SUCCESSED,
+  USER_LOGOUT,
 } from "../../constants";
 
 const initialState = {
-  open: false,
+  isOpenModal: false,
+  modalType: "",
   user: null,
   isFetching: false,
-  isLoggedIn: false,
+  isLoggedIn: Boolean(localStorage.getItem("token")),
   error: null,
 };
 
 const authReducer = (state = initialState, action) => {
-  console.log(action.payload);
   switch (action.type) {
-    case IS_AUTH_MODAL_OPEN:
-      return { ...state, open: true };
-    case TOOGLE_MODAL:
-      return { ...state, open: false };
+    case OPEN_MODAL:
+      return {
+        ...state,
+        isOpenModal: true,
+        modalType: action.payload,
+      };
+    case CLOSE_MODAL:
+      return {
+        ...state,
+        isOpenModal: false,
+      };
     case USER_AUTH_REQUESTED:
       return {
         ...state,
@@ -36,7 +45,7 @@ const authReducer = (state = initialState, action) => {
         isLoggedIn: true,
         error: null,
         user: action.payload,
-        open: false,
+        isOpenModal: false,
       };
     case USER_REGISTER_FAILED:
       return {
@@ -45,6 +54,13 @@ const authReducer = (state = initialState, action) => {
         isLoggedIn: false,
         error: action.payload,
       };
+
+    case USER_LOGIN_REQUESTED:
+      return {
+        ...state,
+        isFetching: true,
+        error: null,
+      };
     case USER_LOGIN_SUCCESSED:
       return {
         ...state,
@@ -52,7 +68,7 @@ const authReducer = (state = initialState, action) => {
         isLoggedIn: true,
         error: null,
         user: action.payload,
-        open: false,
+        isOpenModal: false,
       };
     case USER_LOGIN_FAILED:
       return {
@@ -60,6 +76,13 @@ const authReducer = (state = initialState, action) => {
         isFetching: false,
         isLoggedIn: false,
         error: action.payload,
+      };
+    case USER_LOGOUT:
+      return {
+        ...state,
+        isFetching: false,
+        isLoggedIn: false,
+        user: null,
       };
     default:
       return state;
