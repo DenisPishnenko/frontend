@@ -1,20 +1,26 @@
 import React from "react";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-import { register } from "../../redux/actions/auth";
-import { FORM_FIELDS, validateUser } from "../../constants";
+import { login, register } from "../../redux/actions/auth";
+import { FORM_FIELDS, LOGGED_FIELDS, validateUser } from "../../constants";
 
 import { useStyles } from "./style";
 
 const AuthForm = () => {
   const dispatch = useDispatch();
+  const modalType = useSelector((state) => state.auth.modalType);
+
+  const CURRENT_FIELDS = modalType === "SIGN UP" ? FORM_FIELDS : LOGGED_FIELDS;
   const classes = useStyles();
 
-  const submitHandler = (values) => dispatch(register(values));
+  const submitHandler = (values) => {
+    if (modalType === "SIGN UP") dispatch(register(values));
+    else dispatch(login(values));
+  };
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -26,7 +32,7 @@ const AuthForm = () => {
   });
   return (
     <form className={classes.root}>
-      {FORM_FIELDS.map((item) => (
+      {CURRENT_FIELDS.map((item) => (
         <div key={item.label} className={classes.form}>
           <TextField
             id="standard-basic"
@@ -52,7 +58,7 @@ const AuthForm = () => {
         type="submit"
         onClick={formik.handleSubmit}
       >
-        Submit
+        {modalType}
       </Button>
     </form>
   );
