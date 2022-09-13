@@ -4,8 +4,16 @@ const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 
-// api.headers.interceptors.request.use((config) => {
-//   config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
-// });
+api.interceptors.request.use(
+  (config) => {
+    const { headers } = config;
+    const token = localStorage.getItem("token");
+    if (token) {
+      headers.Authorization = token;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
 export default api;
