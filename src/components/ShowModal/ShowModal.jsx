@@ -13,12 +13,12 @@ function ShowModal() {
   const isOpenModal = useSelector((state) => state.auth.isOpenModal);
   const error = useSelector((state) => state.auth.error);
   const modalType = useSelector((state) => state.auth.modalType);
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   return (
     <Modal
       open={isOpenModal}
       className={classes.modal}
-      onClose={() => dispath(closeModal())}
+      onClose={() => dispatch(closeModal())}
       aria-labelledby="simple-modal-title"
       aria-describedby="simple-modal-description"
     >

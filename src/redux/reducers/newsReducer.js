@@ -10,16 +10,27 @@ const initialState = {
   isLoading: false,
 };
 
-const newsReducer = (action, state = initialState) => {
+const newsReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case NEWS_FETCHED_REQUESTED:
-      return { ...state, isLoading: true, error: null };
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
     case NEWS_FETCHED_SUCCESSED:
       return {
-        ...state, news: action.payload, isLoading: false, error: null,
+        ...state,
+        news: action.payload,
+        isLoading: false,
+        error: null,
       };
     case NEWS_FETCHED_FAILED:
-      return { ...state, error: action.payload, isLoading: false };
+      return {
+        ...state,
+        error: action.payload,
+        isLoading: false,
+      };
     default:
       return state;
   }

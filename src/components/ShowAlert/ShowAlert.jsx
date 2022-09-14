@@ -3,7 +3,7 @@ import { string } from 'prop-types';
 
 import Alert from '@material-ui/lab/Alert';
 
-import { useStyles } from './style';
+import useStyles from './style';
 
 function ShowAlert({ severity, message }) {
   const classes = useStyles();

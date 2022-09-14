@@ -12,6 +12,6 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(sagaMiddleware)),
 );
 
-export default store;
-
 sagaMiddleware.run(rootSaga);
+
+export default store;
