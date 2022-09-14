@@ -7,7 +7,6 @@ import { login, registerFailed, registerSuccessed } from "../actions/auth";
 function* registerWorker({ payload }) {
   try {
     const response = yield call(api.post, "/users", { user: payload });
-    console.log(response);
     localStorage.setItem(
       "token",
       JSON.stringify(response.headers.Authorization)
@@ -15,7 +14,7 @@ function* registerWorker({ payload }) {
     yield put(registerSuccessed(response.data));
     yield put(login(payload));
   } catch (error) {
-    yield put(registerFailed(error.message));
+    yield put(registerFailed(error.response.statusText));
   }
 }
 

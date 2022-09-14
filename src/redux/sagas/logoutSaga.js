@@ -3,8 +3,8 @@ import { signOutUser } from "../../api/registerApi";
 import { USER_LOGOUT } from "../../constants";
 
 function* logoutWorker() {
-  const response = yield call(signOutUser);
-  yield console.log(response);
+  yield call(signOutUser);
+  localStorage.removeItem("token");
 }
 
 export function* logoutWatcher() {
