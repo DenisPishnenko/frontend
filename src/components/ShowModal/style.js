@@ -21,4 +21,8 @@ export const useStyles = makeStyles((theme) => ({
   title: {
     textAlign: "center",
   },
+  error: {
+    textAlign: "center",
+    color: "red",
+  },
 }));
