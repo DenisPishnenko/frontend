@@ -11,6 +11,7 @@ import { useStyles } from "./style";
 const ShowModal = () => {
   const classes = useStyles();
   const isOpenModal = useSelector((state) => state.auth.isOpenModal);
+  const error = useSelector((state) => state.auth.error);
   const dispath = useDispatch();
   return (
     <Modal
@@ -22,6 +23,7 @@ const ShowModal = () => {
     >
       <div className={classes.paper}>
         <h4 className={classes.title}>Modal Authorization</h4>
+        {error && <h3 className={classes.error}>{error}</h3>}
         <AuthForm />
       </div>
     </Modal>
