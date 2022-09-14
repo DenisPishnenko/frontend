@@ -8,7 +8,9 @@ import {
   USER_REGISTER_FAILED,
   USER_REGISTER_SUCCESSED,
   USER_LOGOUT,
-} from "../../constants";
+  USER_LOGOUT_SUCCESSED,
+  USER_LOGOUT_FAILED,
+} from '../../constants';
 
 export const openModal = (payload) => ({
   type: OPEN_MODAL,
@@ -51,4 +53,13 @@ export const loginFailed = (error) => ({
 
 export const logout = () => ({
   type: USER_LOGOUT,
+});
+
+export const logoutSuccessed = () => ({
+  type: USER_LOGOUT_SUCCESSED,
+});
+
+export const logoutFailed = (error) => ({
+  type: USER_LOGOUT_FAILED,
+  payload: error,
 });

@@ -1,22 +1,22 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import { string } from 'prop-types';
 
-import Alert from "@material-ui/lab/Alert";
+import Alert from '@material-ui/lab/Alert';
 
-import { useStyles } from "./style";
+import { useStyles } from './style';
 
-const ShowAlert = ({ severity, message }) => {
+function ShowAlert({ severity, message }) {
   const classes = useStyles();
   return (
     <Alert className={classes.container} severity={severity}>
       {message}
     </Alert>
   );
-};
+}
 
 ShowAlert.propTypes = {
-  severity: PropTypes.string,
-  message: PropTypes.string,
+  severity: string.isRequired,
+  message: string.isRequired,
 };
 
 export default ShowAlert;

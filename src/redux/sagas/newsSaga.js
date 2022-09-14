@@ -1,8 +1,8 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { getAllNews } from "../../api/newsApi";
-import { fetchSuccessed, getError } from "../actions/news";
-import { NEWS_FETCHED_REQUESTED } from "../../constants";
+import getAllNews from '../../api/newsApi';
+import { fetchSuccessed, getError } from '../actions/news';
+import { NEWS_FETCHED_REQUESTED } from '../../constants';
 
 function* newsWorker() {
   try {
@@ -13,6 +13,8 @@ function* newsWorker() {
   }
 }
 
-export function* newsWatcher() {
+function* newsWatcher() {
   yield takeEvery(NEWS_FETCHED_REQUESTED, newsWorker);
 }
+
+export default newsWatcher;

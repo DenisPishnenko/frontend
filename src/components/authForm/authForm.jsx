@@ -1,31 +1,31 @@
-import React from "react";
-import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import React, { memo } from 'react';
+import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
-import { login, register } from "../../redux/actions/auth";
-import { FORM_FIELDS, LOGGED_FIELDS, validateUser } from "../../constants";
+import { login, register } from '../../redux/actions/auth';
+import { REGISTER_FIELDS, LOGGED_FIELDS, validateUser } from '../../constants';
 
-import { useStyles } from "./style";
+import useStyles from './style';
 
-const AuthForm = () => {
+function AuthForm() {
   const dispatch = useDispatch();
   const modalType = useSelector((state) => state.auth.modalType);
-
-  const CURRENT_FIELDS = modalType === "SIGN UP" ? FORM_FIELDS : LOGGED_FIELDS;
+  const isAuth = modalType === 'SIGN UP';
+  const CURRENT_FIELDS = isAuth ? REGISTER_FIELDS : LOGGED_FIELDS;
   const classes = useStyles();
 
   const submitHandler = (values) => {
-    if (modalType === "SIGN UP") dispatch(register(values));
+    if (isAuth) dispatch(register(values));
     else dispatch(login(values));
   };
   const formik = useFormik({
     initialValues: {
-      name: "",
-      email: "",
-      password: "",
+      name: '',
+      email: '',
+      password: '',
     },
     validationSchema: validateUser(),
     onSubmit: submitHandler,
@@ -46,9 +46,9 @@ const AuthForm = () => {
             }
             helperText={formik.touched[item.type] && formik.errors[item.type]}
           />
-          {formik.touched[item.name] && formik.errors[item.name] ? (
+          {formik.touched[item.name] && formik.errors[item.name] && (
             <span className={classes.invalid}>{formik.errors[item.name]}</span>
-          ) : null}
+          )}
         </div>
       ))}
       <Button
@@ -62,6 +62,6 @@ const AuthForm = () => {
       </Button>
     </form>
   );
-};
+}
 
-export default AuthForm;
+export default memo(AuthForm);

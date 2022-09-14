@@ -2,7 +2,7 @@ import {
   NEWS_FETCHED_FAILED,
   NEWS_FETCHED_REQUESTED,
   NEWS_FETCHED_SUCCESSED,
-} from "../../constants";
+} from '../../constants';
 
 export const fetchNews = () => ({
   type: NEWS_FETCHED_REQUESTED,

@@ -1,12 +1,20 @@
-import { call, takeLatest } from "redux-saga/effects";
-import { signOutUser } from "../../api/registerApi";
-import { USER_LOGOUT } from "../../constants";
+import { call, put, takeLatest } from 'redux-saga/effects';
+import { signOutUser } from '../../api/signOutUser';
+import { USER_LOGOUT } from '../../constants';
+import { logoutFailed, logoutSuccessed } from '../actions/auth';
 
 function* logoutWorker() {
-  yield call(signOutUser);
-  localStorage.removeItem("token");
+  try {
+    yield call(signOutUser);
+    localStorage.removeItem('token');
+    yield put(logoutSuccessed());
+  } catch (error) {
+    yield put(logoutFailed());
+  }
 }
 
-export function* logoutWatcher() {
+function* logoutWatcher() {
   yield takeLatest(USER_LOGOUT, logoutWorker);
 }
+
+export default logoutWatcher;

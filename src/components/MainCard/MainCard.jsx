@@ -1,13 +1,13 @@
-import React, { memo } from "react";
-import PropTypes from "prop-types";
+import React, { memo } from 'react';
+import { string } from 'prop-types';
 
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
-import { useStyles } from "./style";
+import useStyles from './style';
 
-const MainCard = ({ title, content }) => {
+function MainCard({ title, content }) {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -21,11 +21,15 @@ const MainCard = ({ title, content }) => {
       </CardContent>
     </Card>
   );
-};
+}
 
 MainCard.propTypes = {
-  title: PropTypes.string,
-  content: PropTypes.string,
+  title: string,
+  content: string,
+};
+MainCard.defaultProps = {
+  title: '',
+  content: '',
 };
 
 export default memo(MainCard);
