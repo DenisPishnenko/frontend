@@ -20,6 +20,10 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 export const USER_LOGOUT_SUCCESSED = 'USER_LOGOUT_SUCCESED';
 export const USER_LOGOUT_FAILED = 'USER_LOGOUT_FAILED';
 
+export const USER_REQUESTED = 'USER_REQUESTED';
+export const USER_REQUESTED_SUCCESSED = 'USER_REQUESTED_SUCCESED';
+export const USER_REQUESTED_FAILED = 'USER_REQUESTED_FAILED';
+
 export const validateUser = () => Yup.object().shape({
   name: Yup.string(),
   email: Yup.string()
