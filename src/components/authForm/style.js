@@ -2,17 +2,18 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
   },
-  toolBar: {
+  form: {
     display: 'flex',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
+  invalid: {
+    color: 'red',
+    fontSize: 12,
   },
 }));
 

@@ -1,15 +1,15 @@
-import React, { memo, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { memo, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import ShowAlert from "../../components/ShowAlert/ShowAlert";
-import Loader from "../../components/Loader/Loader";
-import MainCard from "../../components/MainCard/MainCard";
-import { NEWS_WARNING } from "../../constants";
-import { fetchNews } from "../../redux/actions/news";
+import ShowAlert from '../../components/ShowAlert/ShowAlert';
+import Loader from '../../components/Loader/Loader';
+import MainCard from '../../components/MainCard/MainCard';
+import { NEWS_WARNING } from '../../constants';
+import { fetchNews } from '../../redux/actions/news';
 
-import { useStyles } from "./style";
+import useStyles from './style';
 
-const MainPage = () => {
+function MainPage() {
   const classes = useStyles();
 
   const dispatch = useDispatch();
@@ -33,8 +33,8 @@ const MainPage = () => {
   return (
     <div className={classes.wrapper}>
       {news.length ? (
-        news.map((news) => (
-          <MainCard title={news.title} content={news.content} key={news.id} />
+        news.map((item) => (
+          <MainCard title={item.title} content={item.content} key={item.id} />
         ))
       ) : (
         <div className={classes.container}>
@@ -43,6 +43,6 @@ const MainPage = () => {
       )}
     </div>
   );
-};
+}
 
 export default memo(MainPage);
