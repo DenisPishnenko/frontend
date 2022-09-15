@@ -14,7 +14,7 @@ function AuthForm() {
   const dispatch = useDispatch();
   const modalType = useSelector((state) => state.auth.modalType);
   const isAuth = modalType === 'SIGN UP';
-  const CURRENT_FIELDS = isAuth ? REGISTER_FIELDS : LOGGED_FIELDS;
+  const currentFields = isAuth ? REGISTER_FIELDS : LOGGED_FIELDS;
   const classes = useStyles();
 
   const submitHandler = (values) => {
@@ -32,7 +32,7 @@ function AuthForm() {
   });
   return (
     <form className={classes.root}>
-      {CURRENT_FIELDS.map((item) => (
+      {currentFields.map((item) => (
         <div key={item.label} className={classes.form}>
           <TextField
             id="standard-basic"

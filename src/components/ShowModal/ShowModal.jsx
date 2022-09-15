@@ -13,6 +13,7 @@ function ShowModal() {
   const isOpenModal = useSelector((state) => state.auth.isOpenModal);
   const error = useSelector((state) => state.auth.error);
   const modalType = useSelector((state) => state.auth.modalType);
+  const isAuth = modalType === 'SIGN IN';
   const dispatch = useDispatch();
   return (
     <Modal
@@ -24,7 +25,7 @@ function ShowModal() {
     >
       <div className={classes.paper}>
         <h4 className={classes.title}>
-          {modalType === 'SIGN IN' ? 'Authorization' : 'Registration'}
+          {isAuth ? 'Authorization' : 'Registration'}
         </h4>
         {error && <h3 className={classes.error}>{error}</h3>}
         <AuthForm />
