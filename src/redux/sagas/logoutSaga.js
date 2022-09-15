@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { signOutUser } from '../../api/signOutUser';
+import signOutUser from '../../api/signOutUser';
 import { USER_LOGOUT } from '../../constants';
 import { logoutFailed, logoutSuccessed } from '../actions/auth';
 

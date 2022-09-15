@@ -19,4 +19,4 @@ function* registerWatcher() {
   yield takeLatest(USER_AUTH_REQUESTED, registerWorker);
 }
 
-export default registerWatcher();
+export default registerWatcher;

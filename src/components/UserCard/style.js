@@ -16,8 +16,8 @@ const useStyles = makeStyles({
     gap: 20,
   },
   root: {
-    width: 350,
-    height: 250,
+    width: 600,
+    height: 350,
     marginTop: '10vh',
     margin: 'auto',
     display: 'flex',
