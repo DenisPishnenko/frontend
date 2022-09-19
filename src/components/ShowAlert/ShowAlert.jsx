@@ -16,7 +16,10 @@ function ShowAlert({ severity, message }) {
 
 ShowAlert.propTypes = {
   severity: string.isRequired,
-  message: string.isRequired,
+  message: string,
+};
+ShowAlert.defaultProps = {
+  message: '',
 };
 
 export default ShowAlert;
