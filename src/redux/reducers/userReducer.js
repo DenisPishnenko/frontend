@@ -1,4 +1,7 @@
-import { USER_REQUESTED, USER_REQUESTED_FAILED, USER_REQUESTED_SUCCESSED } from '../../constants';
+import {
+  USER_REQUESTED, USER_REQUESTED_FAILED,
+  USER_REQUESTED_SUCCESSED,
+} from '../../constants';
 
 const initialState = {
   user: null,
