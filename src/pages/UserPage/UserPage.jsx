@@ -17,7 +17,7 @@ function UserPage() {
   const { id } = useParams();
   const { user, error, isLoading } = useSelector((state) => state.user);
   useEffect(() => {
-    dispatch(fetchUser(id));
+    if (id) dispatch(fetchUser(id));
   }, []);
 
   if (isLoading) {
