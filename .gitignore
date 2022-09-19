@@ -13,6 +13,8 @@ src/reportWebVitals.js
 # production
 /build
 
+src/assets
+
 # misc
 .DS_Store
 .env.local

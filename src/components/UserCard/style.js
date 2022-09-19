@@ -42,6 +42,12 @@ const useStyles = makeStyles({
   userName: {
     cursor: 'pointer',
   },
+  avatar: {
+    width: 256,
+    height: 256,
+    borderRadius: '50%',
+    objectFit: 'cover',
+  },
 });
 
 export default useStyles;
