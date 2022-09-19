@@ -1,28 +1,37 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
-  container: {
+  wrapper: {
     display: 'flex',
     justifyContent: 'space-around',
+    flexDirection: 'row',
     alignItems: 'center',
-    flexWrap: 'wrap',
+    margin: 'auto',
+    padding: 20,
   },
-
   inner: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
-    gap: 20,
+    width: 700,
+    height: 350,
   },
   root: {
-    width: 600,
-    height: 350,
+    width: 800,
+    height: 450,
     marginTop: '10vh',
     margin: 'auto',
     display: 'flex',
     justifyContent: 'space-around',
+    flexDirection: 'column',
     alignItems: 'center',
+  },
+  buttons: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    gap: 20,
   },
   title: {
     fontSize: 20,
@@ -32,6 +41,12 @@ const useStyles = makeStyles({
   },
   userName: {
     cursor: 'pointer',
+  },
+  avatar: {
+    width: 256,
+    height: 256,
+    borderRadius: '50%',
+    objectFit: 'cover',
   },
 });
 

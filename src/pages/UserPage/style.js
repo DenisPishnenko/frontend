@@ -10,6 +10,11 @@ const useStyles = makeStyles({
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+  },
+  newsContainer: {
+    display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
     flexWrap: 'wrap',
