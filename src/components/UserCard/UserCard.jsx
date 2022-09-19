@@ -8,10 +8,11 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 import useStyles from './style';
-import image from '../../assets/user.png';
+import defaultImage from '../../assets/user.png';
 
 function UserCard({ user }) {
   const classes = useStyles();
+  const userImage = user?.image?.url ? `${process.env.REACT_APP_API_URL}/${user.image.url}` : defaultImage;
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   return (
@@ -19,7 +20,7 @@ function UserCard({ user }) {
       <CardContent className={classes.inner}>
         <div className={classes.wrapper}>
           <img
-            src={image}
+            src={userImage}
             alt="user"
           />
           <div className={classes.inner}>
