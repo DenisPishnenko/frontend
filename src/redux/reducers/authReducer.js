@@ -10,7 +10,7 @@ import {
   USER_LOGOUT,
   USER_LOGOUT_SUCCESSED,
   USER_LOGOUT_FAILED,
-  OPEN_EDIT_MODAL,
+  CHECK_USER_REQUESTED_SUCCESSED,
 } from '../../constants';
 
 const initialState = {
@@ -20,7 +20,6 @@ const initialState = {
   isFetching: false,
   isLoggedIn: Boolean(localStorage.getItem('token')),
   error: null,
-  editModalType: false,
 };
 
 const authReducer = (state = initialState, action = {}) => {
@@ -31,17 +30,10 @@ const authReducer = (state = initialState, action = {}) => {
         isOpenModal: true,
         modalType: action.payload,
       };
-    case OPEN_EDIT_MODAL:
-      return {
-        ...state,
-        isOpenModal: true,
-        editModalType: true,
-      };
     case CLOSE_MODAL:
       return {
         ...state,
         isOpenModal: false,
-        editModalType: false,
       };
     case USER_AUTH_REQUESTED:
     case USER_LOGIN_REQUESTED:
@@ -52,6 +44,7 @@ const authReducer = (state = initialState, action = {}) => {
       };
     case USER_REGISTER_SUCCESSED:
     case USER_LOGIN_SUCCESSED:
+    case CHECK_USER_REQUESTED_SUCCESSED:
       return {
         ...state,
         isFetching: false,
