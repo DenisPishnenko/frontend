@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,8 +17,12 @@ function Header() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const imageUrl = useSelector((state) => state.auth.user?.image.url);
+  const user = useSelector((state) => state.auth.user);
   const avatar = `${process.env.REACT_APP_API_URL}/${imageUrl}`;
   const classes = useStyles();
+
+  const navigate = useNavigate();
+  const getUserPage = () => navigate(`user/${user.id}`);
 
   const openAuthModal = (type) => dispatch(openModal(type));
   const logoutUser = () => dispatch(logout());
@@ -39,7 +43,7 @@ function Header() {
               <Button color="inherit" onClick={logoutUser}>
                 Logout
               </Button>
-              <div>
+              <div onClick={getUserPage} role="presentation">
                 {avatar ? (<img src={avatar} alt="user" className={classes.userImage} />) : (<AccountCircleIcon />)}
               </div>
             </div>
