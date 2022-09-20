@@ -34,7 +34,7 @@ function UserPage() {
     );
   }
   return (
-    <div>
+    <div className={classes.pageWrapper}>
       {user
         ? (
           <div className={classes.wrapper}>

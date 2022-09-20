@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   root: {
     width: 800,
     height: 450,
-    marginTop: '10vh',
+    marginTop: '5vh',
     margin: 'auto',
     display: 'flex',
     justifyContent: 'space-around',

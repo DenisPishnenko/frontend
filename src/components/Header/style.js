@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     height: 30,
     borderRadius: '50%',
     objectFit: 'cover',
+    cursor: 'pointer',
   },
 }));
 
