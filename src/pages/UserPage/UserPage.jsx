@@ -16,6 +16,8 @@ function UserPage() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { user, error, isLoading } = useSelector((state) => state.user);
+  const userAuth = useSelector((state) => state.auth.user);
+  const isAuth = user?.id === userAuth?.id;
   useEffect(() => {
     dispatch(fetchUser(id));
   }, []);
@@ -36,9 +38,9 @@ function UserPage() {
       {user
         ? (
           <div className={classes.wrapper}>
-            <UserCard user={user} />
+            <UserCard user={user} isAuth={isAuth} />
             <div className={classes.newsContainer}>
-              {user.news.map((item) => (
+              {user?.news.map((item) => (
                 <MainCard title={item.title} content={item.content} key={item.id} />
               ))}
             </div>
