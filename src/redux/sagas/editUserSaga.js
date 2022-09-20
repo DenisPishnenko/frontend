@@ -4,10 +4,13 @@ import { fetchUserEditedSuccessed, fetchUserEditedFailed } from '../actions/user
 import { USER_EDIT_REQUESTED } from '../../constants';
 import api from '../../api';
 
-function* userEditWorker({ id, payload }) {
+function* userEditWorker({ payload }) {
   try {
-    const data = yield call(api.put, `/users/${id}`, { user: payload });
-    yield console.log(data);
+    const { id, values, image } = payload;
+    const formData = new FormData();
+    formData.set('name', values.name);
+    formData.set('image', image);
+    const { data } = yield call(api.patch, `/users/${id}`, formData);
     yield put(fetchUserEditedSuccessed(data));
   } catch (error) {
     yield put(fetchUserEditedFailed(error.message));
