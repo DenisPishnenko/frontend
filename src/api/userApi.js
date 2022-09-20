@@ -5,4 +5,9 @@ const getUserWithNews = async (id) => {
   return data;
 };
 
+export const checkUser = async () => {
+  const { data } = await api.get('/member-data');
+  return data;
+};
+
 export default getUserWithNews;
