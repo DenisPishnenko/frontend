@@ -1,59 +1,74 @@
-import React, { memo } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { memo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 
-import { EDIT_FIELDS, validateEditUser } from '../../constants';
+// import { validateEditUser } from '../../constants';
+import { fetchUserEdited } from '../../redux/actions/user';
 
 import useStyles from './style';
-import { fetchUserEdited } from '../../redux/actions/user';
 
 function EditForm() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
-  const defaultValues = {
-    name: user.name,
-    image: user.image,
-  };
-  const { id } = useParams();
+  const { name, id } = useSelector((state) => state.user.user);
+
+  const [image, setImage] = useState(null);
 
   const submitHandler = (values) => {
-    const payload = { id, values };
-    dispatch(fetchUserEdited(payload));
+    dispatch(fetchUserEdited({ id, values, image }));
   };
+
   const formik = useFormik({
     initialValues: {
       name: '',
-      Image: '',
     },
-    validationSchema: validateEditUser(),
     onSubmit: submitHandler,
   });
+
+  const handleChange = (e) => {
+    setImage(e.target.files[0]);
+  };
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      {EDIT_FIELDS.map((item) => (
-        <div className={classes.form}>
-          <TextField
-            id="standard-basic"
-            label={item.label}
-            name={item.name}
-            type={item.type}
-            onChange={formik.handleChange}
-            value={defaultValues[item.name]}
-            error={
-              formik.touched[item.name] && Boolean(formik.errors[item.name])
+      <div className={classes.form}>
+        <TextField
+          id="standard-basic"
+          label={name}
+          name="name"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.name}
+          error={
+              formik.touched.name && Boolean(formik.errors.name)
             }
-            helperText={formik.touched[item.type] && formik.errors[item.type]}
-          />
-          {formik.touched[item.name] && formik.errors[item.name] && (
-            <span className={classes.invalid}>{formik.errors[item.name]}</span>
-          )}
-        </div>
-      ))}
+          helperText={formik.touched.type && formik.errors.type}
+        />
+        {formik.touched.name && formik.errors.name && (
+        <span className={classes.invalid}>{formik.errors.name}</span>
+        )}
+      </div>
+      <div>
+        <label htmlFor="icon-button-photo">
+          <IconButton
+            color="primary"
+            component="span"
+          >
+            <input
+              accept="image/*"
+              className={classes.input}
+              id="icon-button-photo"
+              onChange={handleChange}
+              type="file"
+            />
+            <AddAPhotoIcon />
+          </IconButton>
+        </label>
+      </div>
       <Button
         variant="outlined"
         color="primary"
