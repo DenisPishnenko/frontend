@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Modal from '@material-ui/core/Modal';
 
 import { closeModal } from '../../redux/actions/auth';
+import { closeEditModal } from '../../redux/actions/user';
 import AuthForm from '../AuthForm/AuthForm';
 import EditForm from '../EditForm/EditForm';
 
@@ -11,23 +12,28 @@ import useStyles from './style';
 
 function ShowModal() {
   const classes = useStyles();
-  const isOpenModal = useSelector((state) => state.auth.isOpenModal);
+  const isOpenAuthModal = useSelector((state) => state.auth.isOpenModal);
+  const isOpenEditModal = useSelector((state) => state.user.isOpenModal);
   const error = useSelector((state) => state.auth.error);
   const editingError = useSelector((state) => state.user.error);
   const modalType = useSelector((state) => state.auth.modalType);
-  const editModalType = useSelector((state) => state.auth.editModalType);
   const isAuth = modalType === 'SIGN IN';
   const dispatch = useDispatch();
+
+  const handleClose = () => {
+    if (isOpenAuthModal) dispatch(closeModal());
+    else dispatch(closeEditModal());
+  };
   return (
     <Modal
-      open={isOpenModal}
+      open={isOpenAuthModal || isOpenEditModal}
       className={classes.modal}
-      onClose={() => dispatch(closeModal())}
+      onClose={handleClose}
       aria-labelledby="simple-modal-title"
       aria-describedby="simple-modal-description"
     >
       <div className={classes.paper}>
-        {editModalType ? (
+        {isOpenEditModal ? (
           <div>
             <h4 className={classes.title}>Editing</h4>
             {editingError && (<h3 className={classes.error}>{editingError}</h3>)}
