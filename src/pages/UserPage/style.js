@@ -18,6 +18,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-around',
     alignItems: 'center',
     flexWrap: 'wrap',
+    margin: 'auto',
   },
 });
 

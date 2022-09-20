@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
     color: 'red',
     fontSize: 12,
   },
+  input: {
+    display: 'none',
+  },
 }));
 
 export default useStyles;
