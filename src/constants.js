@@ -35,6 +35,10 @@ export const CHECK_USER_REQUESTED = 'CHECK_USER_REQUESTED';
 export const CHECK_USER_REQUESTED_SUCCESSED = 'CHECK_USER_REQUESTED_SUCCESED';
 export const CHECK_USER_REQUESTED_FAILED = 'CHECK_USER_REQUESTED_FAILED';
 
+export const SIGN_IN = 'SIGN_IN';
+export const SIGN_OUT = 'SIGN_OUT';
+export const EDIT_USER = 'EDIT_USER';
+
 export const validateUser = () => Yup.object().shape({
   name: Yup.string(),
   email: Yup.string()
