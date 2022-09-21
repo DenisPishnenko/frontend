@@ -21,6 +21,8 @@ function Header() {
   const avatar = `${process.env.REACT_APP_API_URL}/${imageUrl}`;
   const classes = useStyles();
 
+  const userPhoto = avatar && imageUrl != null;
+
   const navigate = useNavigate();
   const getUserPage = () => navigate(`user/${user.id}`);
 
@@ -44,7 +46,7 @@ function Header() {
                 Logout
               </Button>
               <div onClick={getUserPage} role="presentation">
-                {avatar ? (<img src={avatar} alt="user" className={classes.userImage} />) : (<AccountCircleIcon />)}
+                {userPhoto ? (<img src={avatar} alt="user" className={classes.userImage} />) : (<AccountCircleIcon />)}
               </div>
             </div>
           ) : (
