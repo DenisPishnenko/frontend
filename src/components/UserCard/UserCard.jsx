@@ -15,8 +15,9 @@ import useStyles from './style';
 function UserCard({ user, isAuth }) {
   const classes = useStyles();
 
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  
   const userImage = user?.image?.url ? `${process.env.REACT_APP_API_URL}/${user.image.url}` : defaultImage;
 
   return (
