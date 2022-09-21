@@ -2,7 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { fetchUserSuccessed, fetchUserFailed } from '../actions/user';
 import { USER_REQUESTED } from '../../constants';
-import getUserWithNews from '../../api/userApi';
+import { getUserWithNews } from '../../api/userApi';
 
 function* userWorker({ payload }) {
   try {

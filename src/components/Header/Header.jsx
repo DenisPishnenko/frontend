@@ -10,6 +10,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 import { openModal, logout } from '../../redux/actions/auth';
 import { checkUser } from '../../redux/actions/user';
+import { SIGN_OUT, SIGN_IN } from '../../constants';
 
 import useStyles from './style';
 
@@ -18,10 +19,8 @@ function Header() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const imageUrl = useSelector((state) => state.auth.user?.image.url);
   const user = useSelector((state) => state.auth.user);
-  const avatar = `${process.env.REACT_APP_API_URL}/${imageUrl}`;
+  const avatar = imageUrl != null && `${process.env.REACT_APP_API_URL}/${imageUrl}`;
   const classes = useStyles();
-
-  const userPhoto = avatar && imageUrl != null;
 
   const navigate = useNavigate();
   const getUserPage = () => navigate(`user/${user.id}`);
@@ -46,12 +45,12 @@ function Header() {
                 Logout
               </Button>
               <div onClick={getUserPage} role="presentation">
-                {userPhoto ? (<img src={avatar} alt="user" className={classes.userImage} />) : (<AccountCircleIcon />)}
+                {avatar ? (<img src={avatar} alt="user" className={classes.userImage} />) : (<AccountCircleIcon />)}
               </div>
             </div>
           ) : (
             <div>
-              <Button color="inherit" onClick={() => openAuthModal('SIGN IN')}>
+              <Button color="inherit" onClick={() => openAuthModal(SIGN_IN)}>
                 Login
               </Button>
               <Button color="inherit" onClick={() => openAuthModal('SIGN UP')}>

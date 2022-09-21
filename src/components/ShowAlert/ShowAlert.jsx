@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { string } from 'prop-types';
 
 import Alert from '@material-ui/lab/Alert';
@@ -22,4 +22,4 @@ ShowAlert.defaultProps = {
   message: '',
 };
 
-export default ShowAlert;
+export default memo(ShowAlert);

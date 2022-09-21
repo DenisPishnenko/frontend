@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 
-// import { validateEditUser } from '../../constants';
 import { fetchUserEdited } from '../../redux/actions/user';
 
 import useStyles from './style';
