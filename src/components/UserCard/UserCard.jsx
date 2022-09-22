@@ -8,7 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 import defaultImage from '../../assets/user.png';
-import { openEditModal } from '../../redux/actions/user';
+import { openModal } from '../../redux/actions/auth';
+import { EDIT_USER } from '../../constants';
 
 import useStyles from './style';
 
@@ -16,6 +17,8 @@ function UserCard({ user, isAuth }) {
   const classes = useStyles();
 
   const dispatch = useDispatch();
+
+  const openEditModal = (type) => dispatch(openModal(type));
 
   const userImage = user?.image?.url ? `${process.env.REACT_APP_API_URL}/${user.image.url}` : defaultImage;
 
@@ -44,7 +47,7 @@ function UserCard({ user, isAuth }) {
           <Button variant="outlined" color="primary">
             CREATE NEWS
           </Button>
-          <Button variant="outlined" color="primary" onClick={() => dispatch(openEditModal())}>
+          <Button variant="outlined" color="primary" onClick={() => openEditModal(EDIT_USER)}>
             EDIT PROFILE
           </Button>
         </div>

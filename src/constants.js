@@ -8,9 +8,6 @@ export const NEWS_WARNING = 'There is no news yet';
 export const OPEN_MODAL = 'IS_AUTH_MODAL_OPEN';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 
-export const OPEN_EDIT_MODAL = 'OPEN_EDIT_MODAL';
-export const CLOSE_EDIT_MODAL = 'CLOSE_EDIT_MODAL';
-
 export const USER_AUTH_REQUESTED = 'USER_REGISTER_REQUESTED';
 export const USER_REGISTER_SUCCESSED = 'USER_REGISTER_SUCCESSED';
 export const USER_REGISTER_FAILED = 'USER_REGISTER_FAILED';
@@ -36,7 +33,7 @@ export const CHECK_USER_REQUESTED_SUCCESSED = 'CHECK_USER_REQUESTED_SUCCESED';
 export const CHECK_USER_REQUESTED_FAILED = 'CHECK_USER_REQUESTED_FAILED';
 
 export const SIGN_IN = 'SIGN_IN';
-export const SIGN_OUT = 'SIGN_OUT';
+export const SIGN_UP = 'SIGN_UP';
 export const EDIT_USER = 'EDIT_USER';
 
 export const validateUser = () => Yup.object().shape({

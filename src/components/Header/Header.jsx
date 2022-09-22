@@ -10,7 +10,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 import { openModal, logout } from '../../redux/actions/auth';
 import { checkUser } from '../../redux/actions/user';
-import { SIGN_OUT, SIGN_IN } from '../../constants';
+import { SIGN_UP, SIGN_IN } from '../../constants';
 
 import useStyles from './style';
 
@@ -25,7 +25,7 @@ function Header() {
   const navigate = useNavigate();
   const getUserPage = () => navigate(`user/${user.id}`);
 
-  const openAuthModal = (type) => dispatch(openModal(type));
+  const openModals = (type) => dispatch(openModal(type));
   const logoutUser = () => dispatch(logout());
 
   useEffect(() => {
@@ -50,10 +50,10 @@ function Header() {
             </div>
           ) : (
             <div>
-              <Button color="inherit" onClick={() => openAuthModal(SIGN_IN)}>
+              <Button color="inherit" onClick={() => openModals(SIGN_IN)}>
                 Login
               </Button>
-              <Button color="inherit" onClick={() => openAuthModal('SIGN UP')}>
+              <Button color="inherit" onClick={() => openModals(SIGN_UP)}>
                 Register
               </Button>
             </div>

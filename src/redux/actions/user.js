@@ -4,16 +4,10 @@ import {
   USER_EDIT_REQUESTED,
   USER_EDIT_REQUESTED_SUCCESSED,
   USER_EDIT_REQUESTED_FAILED,
-  OPEN_EDIT_MODAL,
-  CLOSE_EDIT_MODAL,
   CHECK_USER_REQUESTED,
   CHECK_USER_REQUESTED_SUCCESSED,
   CHECK_USER_REQUESTED_FAILED,
 } from '../../constants';
-
-export const closeEditModal = () => ({
-  type: CLOSE_EDIT_MODAL,
-});
 
 export const fetchUser = (payload) => ({
   type: USER_REQUESTED,
@@ -43,10 +37,6 @@ export const fetchUserEditedSuccessed = (payload) => ({
 export const fetchUserEditedFailed = (payload) => ({
   type: USER_EDIT_REQUESTED_FAILED,
   payload,
-});
-
-export const openEditModal = () => ({
-  type: OPEN_EDIT_MODAL,
 });
 
 export const checkUser = () => ({
