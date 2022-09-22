@@ -16,6 +16,7 @@ import useStyles from './style';
 function UserCard({ user, isAuth }) {
   const classes = useStyles();
 
+
   const dispatch = useDispatch();
 
   const openEditModal = (type) => dispatch(openModal(type));
