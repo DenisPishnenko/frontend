@@ -22,7 +22,7 @@ function ShowModal() {
     { SIGN_IN: { title: 'Authorization', error: authError, form: <AuthForm /> } },
     { EDIT_USER: { title: 'Edition', error: editError, form: <EditForm /> } },
   ];
-  const modal = modalTemplates.find((item) => modalType === Object.keys(item)[0]);
+  const modal = modalTemplates.find((item) => modalType in item);
   const currentModal = modalType && modal[modalType];
   const isOpenModal = useSelector((state) => state.modal.isOpenModal);
   const dispatch = useDispatch();
