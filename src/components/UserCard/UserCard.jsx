@@ -9,14 +9,14 @@ import Button from '@material-ui/core/Button';
 
 import defaultImage from '../../assets/user.png';
 import { openModal } from '../../redux/actions/auth';
-import { EDIT_USER } from '../../constants';
+import { EDIT_USER, ADD_NEWS } from '../../constants';
 
 import useStyles from './style';
 
 function UserCard({ user, isAuth }) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const openEditModal = () => dispatch(openModal(EDIT_USER));
+  const openEditModal = (type) => dispatch(openModal(type));
 
   const userImage = user?.image?.url ? `${process.env.REACT_APP_API_URL}/${user.image.url}` : defaultImage;
 
@@ -42,10 +42,10 @@ function UserCard({ user, isAuth }) {
         </div>
         {isAuth && (
         <div className={classes.buttons}>
-          <Button variant="outlined" color="primary">
+          <Button variant="outlined" color="primary" onClick={() => openEditModal(ADD_NEWS)}>
             CREATE NEWS
           </Button>
-          <Button variant="outlined" color="primary" onClick={openEditModal}>
+          <Button variant="outlined" color="primary" onClick={() => openEditModal(EDIT_USER)}>
             EDIT PROFILE
           </Button>
         </div>

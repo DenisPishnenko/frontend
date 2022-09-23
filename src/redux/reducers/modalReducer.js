@@ -4,6 +4,7 @@ import {
   USER_LOGIN_SUCCESSED,
   USER_REGISTER_SUCCESSED,
   USER_EDIT_REQUESTED_SUCCESSED,
+  USER_NEWS_FETCHED_SUCCESSED,
 } from '../../constants';
 
 const initialState = {
@@ -23,6 +24,7 @@ const modalReducer = (state = initialState, action = {}) => {
     case USER_REGISTER_SUCCESSED:
     case USER_LOGIN_SUCCESSED:
     case USER_EDIT_REQUESTED_SUCCESSED:
+    case USER_NEWS_FETCHED_SUCCESSED:
       return {
         ...state,
         isOpenModal: false,

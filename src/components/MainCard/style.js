@@ -33,6 +33,15 @@ const useStyles = makeStyles({
   userName: {
     cursor: 'pointer',
   },
+  tag: {
+    fontSize: 16,
+    color: 'grey',
+  },
+  image: {
+    width: 128,
+    height: 128,
+    objectFit: 'cover',
+  },
 });
 
 export default useStyles;

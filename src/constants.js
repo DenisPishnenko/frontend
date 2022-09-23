@@ -4,6 +4,10 @@ export const NEWS_FETCHED_SUCCESSED = 'NEWS_FETCHED_SUCCESSED';
 export const NEWS_FETCHED_FAILED = 'NEWS_FETCHED_FAILED';
 export const NEWS_FETCHED_REQUESTED = 'NEWS_FETCH_REQUESTED';
 
+export const USER_NEWS_FETCHED_SUCCESSED = 'NEWS_FETCHED_SUCCESSED';
+export const USER_NEWS_FETCHED_FAILED = 'NEWS_FETCHED_FAILED';
+export const USER_NEWS_FETCHED_REQUESTED = 'NEWS_FETCH_REQUESTED';
+
 export const NEWS_WARNING = 'There is no news yet';
 export const OPEN_MODAL = 'IS_AUTH_MODAL_OPEN';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
@@ -35,6 +39,7 @@ export const CHECK_USER_REQUESTED_FAILED = 'CHECK_USER_REQUESTED_FAILED';
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_UP = 'SIGN_UP';
 export const EDIT_USER = 'EDIT_USER';
+export const ADD_NEWS = 'ADD_NEWS';
 
 export const validateUser = () => Yup.object().shape({
   name: Yup.string(),
@@ -42,6 +47,12 @@ export const validateUser = () => Yup.object().shape({
     .email('Invalid email')
     .required('Please enter the email'),
   password: Yup.string().required('Please enter the password'),
+});
+
+export const validateUserNews = () => Yup.object().shape({
+  title: Yup.string().required('Please enter the title'),
+  content: Yup.string().required('Please enter the content'),
+  tag: Yup.string(),
 });
 
 export const REGISTER_FIELDS = [
@@ -53,4 +64,10 @@ export const REGISTER_FIELDS = [
 export const LOGGED_FIELDS = [
   { label: 'Email', type: 'text', name: 'email' },
   { label: 'Password', type: 'text', name: 'password' },
+];
+
+export const NEWS_FIELDS = [
+  { label: 'Title', type: 'text', name: 'title' },
+  { label: 'Content', type: 'text', name: 'content' },
+  { label: 'Tag', type: 'text', name: 'tag' },
 ];

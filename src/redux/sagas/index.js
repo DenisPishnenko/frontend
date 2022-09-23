@@ -7,6 +7,7 @@ import registerWatcher from './registerSaga';
 import userWatcher from './userSaga';
 import userEditWatcher from './editUserSaga';
 import checkUserWatcher from './checkUserSaga';
+import userNewsWatcher from './userNewsSaga';
 
 function* rootSaga() {
   yield all([
@@ -17,6 +18,7 @@ function* rootSaga() {
     userWatcher(),
     userEditWatcher(),
     checkUserWatcher(),
+    userNewsWatcher(),
   ]);
 }
 
