@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { string } from 'prop-types';
 
 import Alert from '@material-ui/lab/Alert';
@@ -16,7 +16,10 @@ function ShowAlert({ severity, message }) {
 
 ShowAlert.propTypes = {
   severity: string.isRequired,
-  message: string.isRequired,
+  message: string,
+};
+ShowAlert.defaultProps = {
+  message: '',
 };
 
-export default ShowAlert;
+export default memo(ShowAlert);

@@ -5,6 +5,8 @@ import logoutWatcher from './logoutSaga';
 import newsWatcher from './newsSaga';
 import registerWatcher from './registerSaga';
 import userWatcher from './userSaga';
+import userEditWatcher from './editUserSaga';
+import checkUserWatcher from './checkUserSaga';
 
 function* rootSaga() {
   yield all([
@@ -13,6 +15,8 @@ function* rootSaga() {
     loginWatcher(),
     logoutWatcher(),
     userWatcher(),
+    userEditWatcher(),
+    checkUserWatcher(),
   ]);
 }
 

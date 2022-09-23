@@ -12,7 +12,7 @@ import useStyles from './style';
 
 function AuthForm() {
   const dispatch = useDispatch();
-  const modalType = useSelector((state) => state.auth.modalType);
+  const modalType = useSelector((state) => state.modal.modalType);
   const isAuth = modalType === 'SIGN UP';
   const currentFields = isAuth ? REGISTER_FIELDS : LOGGED_FIELDS;
   const classes = useStyles();

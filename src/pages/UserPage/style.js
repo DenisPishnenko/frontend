@@ -18,6 +18,10 @@ const useStyles = makeStyles({
     justifyContent: 'space-around',
     alignItems: 'center',
     flexWrap: 'wrap',
+    gap: 20,
+  },
+  pageWrapper: {
+    marginBottom: 20,
   },
 });
 

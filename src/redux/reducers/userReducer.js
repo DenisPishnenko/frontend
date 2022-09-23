@@ -1,4 +1,13 @@
-import { USER_REQUESTED, USER_REQUESTED_FAILED, USER_REQUESTED_SUCCESSED } from '../../constants';
+import {
+  USER_EDIT_REQUESTED,
+  USER_EDIT_REQUESTED_FAILED,
+  USER_EDIT_REQUESTED_SUCCESSED,
+  USER_REQUESTED, USER_REQUESTED_FAILED,
+  USER_REQUESTED_SUCCESSED,
+  CHECK_USER_REQUESTED,
+  CHECK_USER_REQUESTED_FAILED,
+  CHECK_USER_REQUESTED_SUCCESSED,
+} from '../../constants';
 
 const initialState = {
   user: null,
@@ -9,12 +18,16 @@ const initialState = {
 const userReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case USER_REQUESTED:
+    case USER_EDIT_REQUESTED:
+    case CHECK_USER_REQUESTED:
       return {
         ...state,
         isLoading: true,
         error: null,
       };
     case USER_REQUESTED_SUCCESSED:
+    case USER_EDIT_REQUESTED_SUCCESSED:
+    case CHECK_USER_REQUESTED_SUCCESSED:
       return {
         ...state,
         isLoading: false,
@@ -22,6 +35,8 @@ const userReducer = (state = initialState, action = {}) => {
         user: action.payload,
       };
     case USER_REQUESTED_FAILED:
+    case USER_EDIT_REQUESTED_FAILED:
+    case CHECK_USER_REQUESTED_FAILED:
       return {
         ...state,
         isLoading: false,

@@ -34,20 +34,27 @@ function UserPage() {
     );
   }
   return (
-    user && (
-      <div className={classes.wrapper}>
-        <UserCard user={user} isAuth={isAuth} />
-        <div className={classes.newsContainer}>
-          {user?.news ? (user.news.map((item) => (
-            <MainCard title={item.title} content={item.content} key={item.id} />
-          ))) : (
-            <div className={classes.container}>
-              <ShowAlert severity="warning" message={NEWS_WARNING} />
+
+    <div className={classes.pageWrapper}>
+      {user
+        ? (
+          <div className={classes.wrapper}>
+            <UserCard user={user} isAuth={isAuth} />
+            <div className={classes.newsContainer}>
+              {user?.news.map((item) => (
+                <MainCard title={item.title} content={item.content} key={item.id} />
+              ))}
             </div>
-          )}
-        </div>
-      </div>
-    ));
+          </div>
+        )
+        : (
+          <div className={classes.container}>
+            <ShowAlert severity="warning" message={NEWS_WARNING} />
+
+          </div>
+        )}
+    </div>
+  );
 }
 
 export default memo(UserPage);

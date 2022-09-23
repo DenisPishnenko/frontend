@@ -1,6 +1,4 @@
 import {
-  OPEN_MODAL,
-  CLOSE_MODAL,
   USER_AUTH_REQUESTED,
   USER_LOGIN_FAILED,
   USER_LOGIN_REQUESTED,
@@ -10,10 +8,10 @@ import {
   USER_LOGOUT,
   USER_LOGOUT_SUCCESSED,
   USER_LOGOUT_FAILED,
+  CHECK_USER_REQUESTED_SUCCESSED,
 } from '../../constants';
 
 const initialState = {
-  isOpenModal: false,
   modalType: '',
   user: null,
   isFetching: false,
@@ -23,17 +21,6 @@ const initialState = {
 
 const authReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case OPEN_MODAL:
-      return {
-        ...state,
-        isOpenModal: true,
-        modalType: action.payload,
-      };
-    case CLOSE_MODAL:
-      return {
-        ...state,
-        isOpenModal: false,
-      };
     case USER_AUTH_REQUESTED:
     case USER_LOGIN_REQUESTED:
       return {
@@ -43,13 +30,13 @@ const authReducer = (state = initialState, action = {}) => {
       };
     case USER_REGISTER_SUCCESSED:
     case USER_LOGIN_SUCCESSED:
+    case CHECK_USER_REQUESTED_SUCCESSED:
       return {
         ...state,
         isFetching: false,
         isLoggedIn: true,
         error: null,
         user: action.payload,
-        isOpenModal: false,
       };
     case USER_REGISTER_FAILED:
     case USER_LOGIN_FAILED:
@@ -72,7 +59,6 @@ const authReducer = (state = initialState, action = {}) => {
         isLoggedIn: false,
         error: null,
         user: null,
-        isOpenModal: false,
       };
     case USER_LOGOUT_FAILED:
       return {
