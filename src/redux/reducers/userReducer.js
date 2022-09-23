@@ -6,6 +6,7 @@ import {
   USER_REQUESTED_SUCCESSED,
   CHECK_USER_REQUESTED,
   CHECK_USER_REQUESTED_FAILED,
+  CHECK_USER_REQUESTED_SUCCESSED,
 } from '../../constants';
 
 const initialState = {
@@ -26,6 +27,7 @@ const userReducer = (state = initialState, action = {}) => {
       };
     case USER_REQUESTED_SUCCESSED:
     case USER_EDIT_REQUESTED_SUCCESSED:
+    case CHECK_USER_REQUESTED_SUCCESSED:
       return {
         ...state,
         isLoading: false,

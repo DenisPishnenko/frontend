@@ -7,10 +7,10 @@ function ModalLayout({ modal }) {
   const classes = useStyles();
   return (
     <div className={classes.paper}>
-      <div key={modal.title}>
-        <h4 className={classes.title}>{modal.title}</h4>
-        {modal.error && (<h3 className={classes.error}>{modal.error}</h3>)}
-        {modal.form}
+      <div key={modal?.title}>
+        <h4 className={classes.title}>{modal?.title}</h4>
+        {modal?.error && (<h3 className={classes.error}>{modal?.error}</h3>)}
+        {modal?.form}
       </div>
     </div>
 

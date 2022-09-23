@@ -19,13 +19,13 @@ function Header() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const imageUrl = useSelector((state) => state.auth.user?.image.url);
   const user = useSelector((state) => state.auth.user);
-  const avatar = imageUrl != null && `${process.env.REACT_APP_API_URL}/${imageUrl}`;
+  const avatar = `${process.env.REACT_APP_API_URL}/${imageUrl}`;
   const classes = useStyles();
 
   const navigate = useNavigate();
   const getUserPage = () => navigate(`user/${user.id}`);
 
-  const openModals = (type) => dispatch(openModal(type));
+  const openTopicalModal = (type) => dispatch(openModal(type));
   const logoutUser = () => dispatch(logout());
 
   useEffect(() => {
@@ -45,15 +45,15 @@ function Header() {
                 Logout
               </Button>
               <div onClick={getUserPage} role="presentation">
-                {avatar ? (<img src={avatar} alt="user" className={classes.userImage} />) : (<AccountCircleIcon />)}
+                {imageUrl ? (<img src={avatar} alt="user" className={classes.userImage} />) : (<AccountCircleIcon />)}
               </div>
             </div>
           ) : (
             <div>
-              <Button color="inherit" onClick={() => openModals(SIGN_IN)}>
+              <Button color="inherit" onClick={() => openTopicalModal(SIGN_IN)}>
                 Login
               </Button>
-              <Button color="inherit" onClick={() => openModals(SIGN_UP)}>
+              <Button color="inherit" onClick={() => openTopicalModal(SIGN_UP)}>
                 Register
               </Button>
             </div>
