@@ -44,7 +44,7 @@ function MainCard({
             onClick={getUserPage}
             role="presentation"
           >
-            {user.name}
+            {user?.name}
           </span>
         </Typography>
         )}

@@ -13,7 +13,7 @@ function* userNewsWorker({ payload }) {
     formData.set('image', image);
     const news = yield call(api.post, `/users/${id}/news`, formData);
     yield put(fetchUserNewsSuccessed(news));
-    yield put(fetchUser(news.data.user_id));
+    yield put(fetchUser(id));
   } catch (error) {
     yield put(fetchUserNewsError(error.message));
   }
