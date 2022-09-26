@@ -41,6 +41,7 @@ const useStyles = makeStyles({
     width: 128,
     height: 128,
     objectFit: 'cover',
+    borderRadius: 10,
   },
 });
 
