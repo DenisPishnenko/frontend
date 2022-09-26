@@ -17,7 +17,7 @@ function NewsForm() {
   const [image, setImage] = useState(null);
 
   const dispatch = useDispatch();
-  const { id } = useSelector((state) => state.user.user);
+  const id = useSelector((state) => state.user.user.id);
 
   const submitHandler = (values) => {
     dispatch(fetchUserNews({ id, values, image }));
