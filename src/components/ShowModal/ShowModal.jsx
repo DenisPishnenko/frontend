@@ -7,6 +7,7 @@ import { closeModal } from '../../redux/actions/auth';
 import ModalLayout from '../ModalLayout/ModalLayout';
 import AuthForm from '../AuthForm/AuthForm';
 import EditForm from '../EditForm/EditForm';
+import NewsForm from '../NewsForm/NewsForm';
 
 import useStyles from './style';
 
@@ -21,6 +22,7 @@ function ShowModal() {
     { SIGN_UP: { title: 'Registration', error: authError, form: <AuthForm /> } },
     { SIGN_IN: { title: 'Authorization', error: authError, form: <AuthForm /> } },
     { EDIT_USER: { title: 'Edition', error: editError, form: <EditForm /> } },
+    { ADD_NEWS: { title: 'News Edition', error: editError, form: <NewsForm /> } },
   ];
   const modal = modalTemplates.find((item) => modalType in item);
   const currentModal = modalType && modal[modalType];

@@ -33,8 +33,22 @@ function MainPage() {
   return (
     <div className={classes.wrapper}>
       {news.length ? (
-        news.map((item) => (
-          <MainCard title={item.title} content={item.content} user={item.user} key={item.id} />
+        news.map(({
+          title,
+          content,
+          user,
+          tag,
+          image,
+          id,
+        }) => (
+          <MainCard
+            title={title}
+            content={content}
+            user={user}
+            tags={tag}
+            key={id}
+            image={image?.url}
+          />
         ))
       ) : (
         <div className={classes.container}>

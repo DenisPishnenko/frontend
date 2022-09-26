@@ -42,7 +42,13 @@ function UserPage() {
             <UserCard user={user} isAuth={isAuth} />
             <div className={classes.newsContainer}>
               {user?.news.map((item) => (
-                <MainCard title={item.title} content={item.content} key={item.id} />
+                <MainCard
+                  title={item.title}
+                  content={item.content}
+                  tag={item.tag}
+                  image={item.image?.url}
+                  key={item.id}
+                />
               ))}
             </div>
           </div>
