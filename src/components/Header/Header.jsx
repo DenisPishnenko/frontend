@@ -44,8 +44,8 @@ function Header() {
               <Button color="inherit" onClick={logoutUser}>
                 Logout
               </Button>
-              <div onClick={getUserPage} role="presentation">
-                {imageUrl ? (<img src={avatar} alt="user" className={classes.userImage} />) : (<AccountCircleIcon />)}
+              <div onClick={getUserPage} role="presentation" className={classes.userImage}>
+                {imageUrl ? (<img src={avatar} alt="user" />) : (<AccountCircleIcon />)}
               </div>
             </div>
           ) : (

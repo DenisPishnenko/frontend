@@ -77,7 +77,6 @@ function NewsForm() {
         <Button
           variant="outlined"
           color="primary"
-          href="#outlined-buttons"
           type="submit"
           onClick={formik.handleSubmit}
         >

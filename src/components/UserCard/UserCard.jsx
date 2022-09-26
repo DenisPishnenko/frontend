@@ -16,7 +16,7 @@ import useStyles from './style';
 function UserCard({ user, isAuth }) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const openEditModal = (type) => dispatch(openModal(type));
+  const openEditOrCreateModal = (type) => dispatch(openModal(type));
 
   const userImage = user?.image?.url ? `${process.env.REACT_APP_API_URL}/${user.image.url}` : defaultImage;
 
@@ -42,10 +42,10 @@ function UserCard({ user, isAuth }) {
         </div>
         {isAuth && (
         <div className={classes.buttons}>
-          <Button variant="outlined" color="primary" onClick={() => openEditModal(ADD_NEWS)}>
+          <Button variant="outlined" color="primary" onClick={() => openEditOrCreateModal(ADD_NEWS)}>
             CREATE NEWS
           </Button>
-          <Button variant="outlined" color="primary" onClick={() => openEditModal(EDIT_USER)}>
+          <Button variant="outlined" color="primary" onClick={() => openEditOrCreateModal(EDIT_USER)}>
             EDIT PROFILE
           </Button>
         </div>
