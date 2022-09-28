@@ -11,6 +11,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { openModal, logout } from '../../redux/actions/auth';
 import { checkUser } from '../../redux/actions/user';
 import { SIGN_UP, SIGN_IN } from '../../constants';
+import SearchForm from '../SearchForm/SearchForm';
 
 import useStyles from './style';
 
@@ -39,13 +40,14 @@ function Header() {
           <Typography className={classes.title} variant="h6">
             <Link to="/" className={classes.link}>News App</Link>
           </Typography>
+          <SearchForm />
           {isLoggedIn ? (
             <div className={classes.headerGroup}>
               <Button color="inherit" onClick={logoutUser}>
                 Logout
               </Button>
               <div onClick={getUserPage} role="presentation" className={classes.userImage}>
-                {imageUrl ? (<img src={avatar} alt="user" />) : (<AccountCircleIcon />)}
+                {imageUrl ? (<img src={avatar} alt="user" className={classes.userImage} />) : (<AccountCircleIcon />)}
               </div>
             </div>
           ) : (
