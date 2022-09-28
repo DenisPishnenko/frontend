@@ -13,7 +13,25 @@ function MainPage() {
   const classes = useStyles();
 
   const dispatch = useDispatch();
-  const { news, error, isLoading } = useSelector((state) => state.news);
+  const {
+    news, error, isLoading, filterType, searchText,
+  } = useSelector((state) => state.news);
+
+  const filterNews = () => {
+    switch (filterType) {
+      case 'Author':
+        return news.filter((item) => item.user.name.indexOf(searchText) !== -1);
+      case 'Tag':
+        return news.filter((item) => item.tag.indexOf(searchText) !== -1);
+      case 'All':
+        return news.filter((item) => Object.values(item).some((value) => typeof value === 'string' && value.indexOf(searchText) !== -1));
+      default:
+        return news;
+    }
+  };
+  const filteredNews = filterNews();
+  console.log(filterType);
+  console.log(filteredNews);
 
   useEffect(() => {
     dispatch(fetchNews());
@@ -32,8 +50,8 @@ function MainPage() {
   }
   return (
     <div className={classes.wrapper}>
-      {news.length ? (
-        news.map(({
+      {filteredNews.length ? (
+        filteredNews.map(({
           title,
           content,
           user,
