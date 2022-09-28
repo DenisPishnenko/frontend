@@ -14,6 +14,12 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     color: 'white',
   },
+  select: {
+    color: 'white',
+    icon: {
+      fill: 'white',
+    },
+  },
 }));
 
 export default useStyles;

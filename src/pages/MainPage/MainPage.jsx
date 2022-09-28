@@ -20,18 +20,19 @@ function MainPage() {
   const filterNews = () => {
     switch (filterType) {
       case 'Author':
-        return news.filter((item) => item.user.name.indexOf(searchText) !== -1);
+        return news.filter((item) => item.user.name.toLowerCase()
+          .indexOf(searchText.toLowerCase()) !== -1);
       case 'Tag':
-        return news.filter((item) => item.tag.indexOf(searchText) !== -1);
+        return news.filter((item) => item.tag.toLowerCase()
+          .indexOf(searchText.toLowerCase()) !== -1);
       case 'All':
-        return news.filter((item) => Object.values(item).some((value) => typeof value === 'string' && value.indexOf(searchText) !== -1));
+        return news.filter((item) => Object.values(item)
+          .some((value) => value.toString().toLowerCase().indexOf(searchText) !== -1));
       default:
         return news;
     }
   };
   const filteredNews = filterNews();
-  console.log(filterType);
-  console.log(filteredNews);
 
   useEffect(() => {
     dispatch(fetchNews());
