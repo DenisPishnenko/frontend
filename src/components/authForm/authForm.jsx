@@ -13,10 +13,9 @@ import useStyles from './style';
 function AuthForm() {
   const dispatch = useDispatch();
   const modalType = useSelector((state) => state.modal.modalType);
-  const isAuth = modalType === 'SIGN UP';
+  const isAuth = modalType === 'SIGN_UP';
   const currentFields = isAuth ? REGISTER_FIELDS : LOGGED_FIELDS;
   const classes = useStyles();
-
   const submitHandler = (values) => {
     if (isAuth) dispatch(register(values));
     else dispatch(login(values));
@@ -54,7 +53,6 @@ function AuthForm() {
       <Button
         variant="outlined"
         color="primary"
-        href="#outlined-buttons"
         type="submit"
         onClick={formik.handleSubmit}
       >
