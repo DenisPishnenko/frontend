@@ -6,7 +6,8 @@ const useStyles = makeStyles((theme) => ({
   },
   toolBar: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
   menuButton: {
     marginRight: theme.spacing(2),

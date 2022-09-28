@@ -41,6 +41,9 @@ export const SIGN_UP = 'SIGN_UP';
 export const EDIT_USER = 'EDIT_USER';
 export const ADD_NEWS = 'ADD_NEWS';
 
+export const SEARCHED_NEWS_REQUESTED = 'SEARCHED_NEWS_REQUESTED';
+export const SET_FILTER_TYPE = 'SET_FILTER_TYPE';
+
 export const validateUser = () => Yup.object().shape({
   name: Yup.string(),
   email: Yup.string()
